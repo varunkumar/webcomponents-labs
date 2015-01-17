@@ -3,6 +3,7 @@
   <head>
     <title>Web Components - Template: Basic example</title>
     <template id="card-template">
+      <script>alert('Rendering card');</script>
       <card class="vcard">
         <img class="logo" src="http://webcomponents.org/img/logo.svg">
         <div>
@@ -31,10 +32,11 @@
     </style>
   </head>
   <body>
+    <button onclick="renderCards()">Render cards</button>
     <div id="host"></div>
     <script src="../lib/webcomponentsjs-0.5.1/webcomponents.js"></script>
     <script type="text/javascript">
-      function init() {
+      function renderCards() {
         var data = [
           {"firstName": "Varunkumar", "lastName": "Nagarajan"},
           {"firstName": "John", "lastName": "Smith", "city": "New York"},
@@ -61,8 +63,6 @@
           }
         }
       }
-
-      init();
     </script>
   </body>
 </html>
