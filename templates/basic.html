@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Web Components - Template: Basic example</title>
+    <template id="card-template">
+      <style>
+        .logo {
+          height: 50px;
+          width: 50px;
+          float: left;
+        }
+
+        .vcard {
+          border: solid 1px #AAA;
+          float: left;
+          width: 100%;
+          padding: 5px;
+        }
+
+        .vcard:hover {
+          background: #CCC;
+        }
+      </style>
+      <card class="vcard">
+        <img class="logo" src="http://webcomponents.org/img/logo.svg">
+        <div>
+          <strong><lastName></lastName>, <firstName></firstName></strong><br/>
+          <city></city>
+        </div>
+      </card>
+    </template>
+  </head>
+  <body>
+    <div id="host"></div>
+    <script type="text/javascript">
+      function init() {
+        var data = [
+          {"firstName": "Varunkumar", "lastName": "Nagarajan"},
+          {"firstName": "John", "lastName": "Smith", "city": "New York"},
+        ];
+        for (var i = 0; i < data.length; i++) {
+          renderCard(data[i]);
+        }
+      }
+
+      function renderCard(data) {
+        var template = document.getElementById('card-template');
+        var clone = document.importNode(template.content, true);
+        processPlaceholders(clone, data);
+        var host = document.querySelector('#host');
+        host.appendChild(clone);
+      }
+
+      function processPlaceholders(clone, data) {
+        var keys = Object.keys(data);
+        for (var i = 0; i < keys.length; i++) {
+          var node = clone.querySelector(keys[i]);
+          if (node != null) {
+            node.innerHTML = data[keys[i]];
+          }
+        }
+      }
+
+      init();
+    </script>
+  </body>
+</html>
