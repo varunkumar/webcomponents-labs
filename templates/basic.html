@@ -3,24 +3,6 @@
   <head>
     <title>Web Components - Template: Basic example</title>
     <template id="card-template">
-      <style>
-        .logo {
-          height: 50px;
-          width: 50px;
-          float: left;
-        }
-
-        .vcard {
-          border: solid 1px #AAA;
-          float: left;
-          width: 100%;
-          padding: 5px;
-        }
-
-        .vcard:hover {
-          background: #CCC;
-        }
-      </style>
       <card class="vcard">
         <img class="logo" src="http://webcomponents.org/img/logo.svg">
         <div>
@@ -29,9 +11,26 @@
         </div>
       </card>
     </template>
+    <style>
+      .logo {
+        height: 50px;
+        width: 50px;
+        float: left;
+      }
+
+      .vcard {
+        border: solid 1px #AAA;
+        float: left;
+        width: 100%;
+        padding: 5px;
+      }
+
+      .vcard:hover {
+        background: #CCC;
+      }
+    </style>
   </head>
   <body>
-    <img class="logo" src="http://webcomponents.org/img/logo.svg">
     <div id="host"></div>
     <script src="../lib/webcomponentsjs-0.5.1/webcomponents.js"></script>
     <script type="text/javascript">
