@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Web Components - Shadow DOM: Basic example</title>
+  </head>
+  <body>
+    <div id="host"></div>
+    <script type="text/javascript">
+      var host = document.querySelector('#host');
+      var root = host.createShadowRoot(); // Create a Shadow Root
+      var div = document.createElement('div');
+      div.textContent = 'This is Shadow DOM';
+      root.appendChild(div); // Append elements to the Shadow Root
+    </script>
+  </body>
+</html>
