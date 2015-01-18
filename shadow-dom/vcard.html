@@ -38,6 +38,7 @@
   </head>
   <body>
     <div id="nameTag">Varunkumar</div>
+    <div class="outer">Check for style scoping. This should not get the style of 'outer' class. Style is getting leaked in Safari and Firefox when used with Polyfill.</div>
     <script src="../lib/webcomponentsjs-0.5.1/webcomponents.js"></script>
     <script>
       var shadow = document.querySelector('#nameTag').createShadowRoot();
