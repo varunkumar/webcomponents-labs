@@ -8,7 +8,7 @@
     .outer {
       border: 2px solid brown;
       border-radius: 1em;
-      background: var(--card-background-color, red);
+      background: red;
       font-size: 20pt;
       width: 15em;
       height: 8em;
@@ -49,9 +49,7 @@
           element has the class 'red-theme' -->
     <div class="outer">
       <div class="boilerplate"> Hi! This is </div>
-      <div class="name">
-        <content select=".first"></content>
-      </div>
+      <content select=".first"></content>
       <div style="color: yellow;">
         <content select="div"></content>
       </div>
@@ -61,11 +59,6 @@
       </div>
     </div>
   </template>
-  <style type="text/css">
-  #nameTag {
-    --card-background-color: grey;
-  }
-  </style>
   <!-- The /deep/ combinator is similar to ::shadow, but more powerful. It completely ignores all shadow boundaries and 
   crosses into any number of shadow trees. Put simply, /deep/ allows you to drill into an element's guts and target any 
   node. 
@@ -76,10 +69,22 @@
   <!-- Ideal way to customize Shadow DOM is via CSS variables. Only Firefox supports it for now. :host, :host-context, 
   ::shadow and /deep/ are supported only by Chrome and Opera natively. Not supported by Polyfill though. -->
 </head>
+<style type="text/css">
+.name {
+  background: blue;
+}
+</style>
 
 <body class="red-theme">
   <div id="nameTag">
-    <div class="first">Varunkumar</div>
+    <div class="first">
+      <!-- Distributed nodes: Distributed nodes are elements that render at an insertion point (a <content> element). 
+      The <content> element allows you to select nodes from the Light DOM and render them at predefined locations in 
+      your Shadow DOM. They're not logically in the Shadow DOM; they're still children of the host element. Insertion 
+      points are just a rendering thing. Distributed nodes retain styles from the main document. That is, style rules 
+      from the main page continue to apply to the elements, even when they render at an insertion point. -->
+      <div class="name">Varunkumar</div>
+    </div>
     <div>Nagarajan</div>
     <div class="email">varunkumar.n@xyz.com</div>
   </div>
