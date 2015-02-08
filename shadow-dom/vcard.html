@@ -8,7 +8,7 @@
     .outer {
       border: 2px solid brown;
       border-radius: 1em;
-      background: red;
+      background: var(--card-background-color, red);
       font-size: 20pt;
       width: 15em;
       height: 8em;
@@ -62,11 +62,8 @@
     </div>
   </template>
   <style type="text/css">
-  #nameTag::shadow .outer {
-    background: grey;
-  }
-  #nameTag /deep/ .outer {
-    background: blue;
+  #nameTag {
+    --card-background-color: grey;
   }
   </style>
   <!-- The /deep/ combinator is similar to ::shadow, but more powerful. It completely ignores all shadow boundaries and 
@@ -76,6 +73,8 @@
   Native HTML controls are a challenge to style. Many people simply give up and roll their own. However, with ::shadow 
   and /deep/, any element in the web platform that uses Shadow DOM can be styled.
   -->
+  <!-- Ideal way to customize Shadow DOM is via CSS variables. Only Firefox supports it for now. :host, :host-context, 
+  ::shadow and /deep/ are supported only by Chrome and Opera natively. Not supported by Polyfill though. -->
 </head>
 
 <body class="red-theme">
