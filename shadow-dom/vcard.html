@@ -107,8 +107,13 @@
   var clone = document.importNode(template.content, true);
   shadow.appendChild(clone);
 
-  var shadow2 = document.querySelector("#nameTag").createShadowRoot();
-  shadow2.innerHTML = "<div><center>Nested Shadow DOMs</center><shadow></shadow>";
+  var nameTag = document.querySelector("#nameTag");
+  console.log(shadow.querySelector("content[select='.first']"));
+  console.log(shadow.querySelector("content[select='.first'] .name"));
+  // null. We can't query contents from shadow. Distributed nodes are still attached to host and not shadow.
+
+  console.log(nameTag.querySelector(".first"));
+  console.log(nameTag.querySelector(".first .name"));
   </script>
 </body>
 
