@@ -61,6 +61,21 @@
       </div>
     </div>
   </template>
+  <style type="text/css">
+  #nameTag::shadow .outer {
+    background: grey;
+  }
+  #nameTag /deep/ .outer {
+    background: blue;
+  }
+  </style>
+  <!-- The /deep/ combinator is similar to ::shadow, but more powerful. It completely ignores all shadow boundaries and 
+  crosses into any number of shadow trees. Put simply, /deep/ allows you to drill into an element's guts and target any 
+  node. 
+  
+  Native HTML controls are a challenge to style. Many people simply give up and roll their own. However, with ::shadow 
+  and /deep/, any element in the web platform that uses Shadow DOM can be styled.
+  -->
 </head>
 
 <body class="red-theme">
@@ -78,11 +93,6 @@
   var template = document.querySelector("#nameTagTemplate");
   var clone = document.importNode(template.content, true);
   shadow.appendChild(clone);
-
-  // Adding another Shadow Tree
-  shadow = document.querySelector("#nameTag").createShadowRoot();
-  shadow.innerHTML =
-    "<h1>This is another Shadow DOM. We can have multiple Shadow Tree. Only the latest one will take effect</h1>";
   </script>
 </body>
 
