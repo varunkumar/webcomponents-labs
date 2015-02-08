@@ -111,6 +111,8 @@
   console.log(shadow.querySelector("content[select='.first']"));
   console.log(shadow.querySelector("content[select='.first'] .name"));
   // null. We can't query contents from shadow. Distributed nodes are still attached to host and not shadow.
+  // Use .getDistributedNodes() to query for nodes
+  console.log(shadow.querySelector("content[select='.first']").getDistributedNodes());
 
   console.log(nameTag.querySelector(".first"));
   console.log(nameTag.querySelector(".first .name"));
