@@ -106,6 +106,10 @@
   var template = document.querySelector("#nameTagTemplate");
   var clone = document.importNode(template.content, true);
   shadow.appendChild(clone);
+
+  var shadow2 = document.querySelector("#nameTag").createShadowRoot();
+  shadow2.innerHTML = "<div>I am second shadow root. My older shadow is " + shadow2.olderShadowRoot +
+    ". Is this same as original shadow?" + (shadow2.olderShadowRoot === shadow ? "Yes" : "No");
   </script>
 </body>
 
