@@ -108,8 +108,7 @@
   shadow.appendChild(clone);
 
   var shadow2 = document.querySelector("#nameTag").createShadowRoot();
-  shadow2.innerHTML = "<div>I am second shadow root. My older shadow is " + shadow2.olderShadowRoot +
-    ". Is this same as original shadow?" + (shadow2.olderShadowRoot === shadow ? "Yes" : "No");
+  shadow2.innerHTML = "<div><center>Nested Shadow DOMs</center><shadow></shadow>";
   </script>
 </body>
 
