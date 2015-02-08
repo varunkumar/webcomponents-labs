@@ -78,6 +78,11 @@
   var template = document.querySelector("#nameTagTemplate");
   var clone = document.importNode(template.content, true);
   shadow.appendChild(clone);
+
+  // Adding another Shadow Tree
+  shadow = document.querySelector("#nameTag").createShadowRoot();
+  shadow.innerHTML =
+    "<h1>This is another Shadow DOM. We can have multiple Shadow Tree. Only the latest one will take effect</h1>";
   </script>
 </body>
 
