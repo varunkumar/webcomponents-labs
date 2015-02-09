@@ -75,9 +75,27 @@
     var clone = document.importNode(template.content, true);
     root.appendChild(clone);
   };
-  window.XCard = document.registerElement("x-card", {
+  var XCard = document.registerElement("x-card", {
     prototype: proto
   });
+
+  // Creating a new instance of card from JavaScript.
+  var card = new XCard();
+  var first = document.createElement("div");
+  first.innerHTML = "John";
+  first.classList.add("first");
+  card.appendChild(first);
+
+  var last = document.createElement("div");
+  last.innerHTML = "Smith";
+  card.appendChild(last);
+
+  var email = document.createElement("div");
+  email.innerHTML = "smith@xyz.com";
+  email.classList.add("email");
+  card.appendChild(email);
+
+  document.body.appendChild(card);
   </script>
 </body>
 
