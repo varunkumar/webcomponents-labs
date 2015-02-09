@@ -58,6 +58,7 @@
 </head>
 
 <body>
+  <button is="x-button-extended">Test button</button>
   <x-card>
     <div class="first">Varunkumar</div>
     <div>Nagarajan</div>
@@ -96,6 +97,35 @@
   card.appendChild(email);
 
   document.body.appendChild(card);
+
+  // Extending an element
+  var protoButtonExtended = Object.create(HTMLButtonElement.prototype);
+  protoButtonExtended.createdCallback = function() {
+    console.log("Extended button callback");
+    this.innerHTML += " (Extended)";
+  };
+  var XButtonExtended = document.registerElement("x-button-extended", {
+    prototype: protoButtonExtended,
+    extends: "button"
+  });
+  // Extending a custom element is not yet supported in Chrome. https://lists.w3.org/Archives/Public/public-webapps/2014OctDec/0157.html
+
+  // Creating type extended custom elements from JS
+  var button = document.createElement("button", "x-button-extended");
+  button.innerHTML = "JS Button"; // This button will not have the text "(Extended)" as createdCallback gets called before this
+  document.body.appendChild(button);
+
+  // Use new operator to create type extended custom elements
+  button = new XButtonExtended();
+  button.innerHTML = "JS Button-1"; // This button will not have the text "(Extended)" as createdCallback gets called before this
+  document.body.appendChild(button);
+
+  // Notes on Unresolved elements: Because custom elements are registered by script using document.registerElement(), they can be
+  // declared or created before their definition is registered by the browser. For example, you can declare <x-tabs> on 
+  // the page but end up invoking document.registerElement('x-tabs') much later.
+
+  // <tabs> not a valid custom HTML element. This inherits from HTMLUnknownElement
+  // <x-tabs> a valid custom HTML element. This inherits from HTMLElement by default
   </script>
 </body>
 
