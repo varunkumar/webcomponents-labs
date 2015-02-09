@@ -121,6 +121,13 @@
   protoButtonExtended.attributeChangedCallback = function(attrName, oldValue, newValue) {
     console.log("Attribute '" + attrName + "' changed from " + oldValue + " to " + newValue);
   };
+  protoButtonExtended.whoAmI = function() {
+    alert("I am an extendedbutton." + this.bar);
+  };
+  // defining a read-only property
+  Object.defineProperty(protoButtonExtended, "bar", {
+    value: 5
+  });
   var XButtonExtended = document.registerElement("x-button-extended", {
     prototype: protoButtonExtended,
     extends: "button"
@@ -131,6 +138,7 @@
   var button = document.createElement("button", "x-button-extended");
   button.innerHTML = "JS Button"; // This button will not have the text "(Extended)" as createdCallback gets called before this
   button.classList.add("dummy");
+  button.setAttribute("onclick", "this.whoAmI()");
   document.body.appendChild(button);
 
   // Use new operator to create type extended custom elements
