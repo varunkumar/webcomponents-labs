@@ -104,6 +104,15 @@
     console.log("Extended button callback");
     this.innerHTML += " (Extended)";
   };
+  protoButtonExtended.attachedCallback = function() {
+    console.log("I got attached.");
+  };
+  protoButtonExtended.detachedCallback = function() {
+    console.log("I got detached.");
+  };
+  protoButtonExtended.attributeChangedCallback = function(attrName, oldValue, newValue) {
+    console.log("Attribute '" + attrName + "' changed from " + oldValue + " to " + newValue);
+  };
   var XButtonExtended = document.registerElement("x-button-extended", {
     prototype: protoButtonExtended,
     extends: "button"
@@ -113,6 +122,7 @@
   // Creating type extended custom elements from JS
   var button = document.createElement("button", "x-button-extended");
   button.innerHTML = "JS Button"; // This button will not have the text "(Extended)" as createdCallback gets called before this
+  button.classList.add("dummy");
   document.body.appendChild(button);
 
   // Use new operator to create type extended custom elements
